@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opencpt-mcp"
+version = "0.0.1"
+description = "MCP server exposing opencpt CPT (cone penetration test) analysis tools to LLM clients"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "jadinata", email = "jamesadinata@gmail.com" }]
+keywords = ["cpt", "cone-penetration-test", "geotechnical", "mcp", "model-context-protocol"]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "opencpt>=0.0.1",
+  "mcp>=2.3,<3",
+]
+
+[project.scripts]
+opencpt-mcp = "opencpt_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/opencpt/opencpt-mcp"
+Repository = "https://github.com/opencpt/opencpt-mcp"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opencpt_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/opencpt_mcp", "README.md", "LICENSE"]
