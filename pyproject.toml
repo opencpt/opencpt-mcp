@@ -31,8 +31,28 @@ opencpt-mcp = "opencpt_mcp.server:main"
 Homepage = "https://github.com/opencpt/opencpt-mcp"
 Repository = "https://github.com/opencpt/opencpt-mcp"
 
+[dependency-groups]
+dev = [
+  "pre-commit",
+  "pyright",
+  "pytest",
+  "ruff",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/opencpt_mcp"]
 
 [tool.hatch.build.targets.sdist]
 include = ["src/opencpt_mcp", "README.md", "LICENSE"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pyright]
+include = ["src"]
+typeCheckingMode = "basic"
+pythonVersion = "3.10"
